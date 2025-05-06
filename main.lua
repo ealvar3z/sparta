@@ -245,8 +245,8 @@ local function find_client(win)
 		if c.window == win then 
 			return c 
 		end
+		c = c.next
 	end
-	c = c.next
   	return nil
 end
 
@@ -272,7 +272,9 @@ end
 
 local function button_press(ev)
   local c = find_client(ev.button_press.child)
-  focus_client(c)
+  if c then
+	  focus_client(c)
+  end
   C.xcb_allow_events(dpy, 1, ev.button_press.sequence)
 end
 
