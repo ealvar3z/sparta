@@ -135,8 +135,8 @@ local XCB_CONFIGURE_REQUEST = 23
 local XCB_BUTTON_PRESS       = 4
 local XCB_DESTROY_NOTIFY     = 17
 
-local function on_sigusr1(_) fs_toggle = true end
-local function on_sigusr2(_) layout_cycle = true end
+local function on_sigusr1() fs_toggle = true end
+local function on_sigusr2() layout_cycle = true end
 SIG.signal(SIGUSR1, ffi.cast("sighandler_t", on_sigusr1))
 SIG.signal(SIGUSR2, ffi.cast("sighandler_t", on_sigusr2))
 
